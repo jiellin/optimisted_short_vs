@@ -17,6 +17,12 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# VS2015
+*.sdf
+*.ilk
+*.exe
+*.pdb
+
 # =========================
 # Operating System Files
 # =========================
