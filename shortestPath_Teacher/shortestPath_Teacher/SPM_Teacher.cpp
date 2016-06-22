@@ -11,14 +11,16 @@ using namespace std;
 int Min(int a, int b) {
 	if (a == 0)
 		return b;
-	if (b == 0)
-		return a;
+	//if (b == 0)
+	//	return a;
 	return a>b ? b : a;
 }
 
 int main() {
 	int row, column;
-	//ifstream cin("1.txt");
+	cout << "*********************************************" << endl;
+	cout << "____________Algorithm of Teacher ____________" << endl;
+	cout << "*********************************************" << endl;
 	cout << "Please input the number of row and column:" << endl;
 	while (scanf("%d%d", &row, &column) != EOF) {		
 		//LM matrix
@@ -52,10 +54,6 @@ int main() {
 		*/
 		for (int j = 0; j < column; j++) {
 			pm[0][j] = lm[0][j];
-			if (lm[0][j] == 0) {
-				spm[0][j] = MAXNUM;
-				tem1[j] = MAXNUM;
-			}
 		}
 		for (int i = 1; i < row; i++) {
 			for (int j = 0; j < column; j++) {
@@ -91,20 +89,18 @@ int main() {
 		//处理矩阵内部
 		for (int i = 1; i < row + 1; i++) {
 			for (int j = 1; j < column; j++) {
+				
 				if (spm[i][j] == MAXNUM) {
 					continue;
 				}
 				int x, y;
-				if (spm[i][j - 1] == MAXNUM)
-					x = MAXNUM;
-				else
-					x = spm[i][j - 1];
+				x = spm[i][j - 1];
 
 				if (tem1[j] == MAXNUM)
 					y = MAXNUM;
 				else
 					y = tem1[j] + pm[i - 1][j];
-				
+
 				spm[i][j] = Min(x, y);
 				tem1[j] = spm[i][j];
 			}
@@ -118,12 +114,12 @@ int main() {
 		for (int j = 0; j < column; j++)
 			cout << spm[row][j] << "\t";
 		cout << endl;
-		/*cout << "Output the SPM metrix ((row+1)*column):" << endl;
+		cout << "output the spm metrix ((row+1)*column):" << endl;
 		for (int i = 0; i < row+1; i++) {
 			for (int j = 0; j < column; j++) {
 				cout << spm[i][j] << "\t";
 			}
 			cout << endl;
-		}*/
+		}
 	}
 }
